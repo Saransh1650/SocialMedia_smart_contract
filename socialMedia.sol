@@ -32,6 +32,7 @@ contract SocialMedia {
         require(msg.sender.balance> amount, "Insufficient Balance");
         require(amount > 0, "Tip amount must be greater than 0");
         address payable creator = posts[id].creatorAddress;
+        require(amount == msg.value, "Enter value to transfer");
         creator.transfer(msg.value);
         emit creatorAddress(creator);
         posts[id].tipTotal += amount;
